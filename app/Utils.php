@@ -30,4 +30,11 @@ class Utils
         return ($amount > config('advantages.cashback.min_transaction_amounts.'.$user->plan->slug)) ?
             self::getUserCashback($user) : 0;
     }
+
+    public static function getUserRendement($user)
+    {
+        $userGrade = self::getUserGrade($user);
+
+        return config('advantages.rendement.'.'grade_'.$userGrade.'.'.$user->plan->slug) ?? 0;
+    }
 }

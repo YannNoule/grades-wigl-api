@@ -91,5 +91,27 @@ it('can get user cashback on amount value ', function () {
 });
 
 /**
- * - Affichage de la valeur du boost de rendement d’un grade spécifique et d’un client spécifique.
+ * - Affichage de la valeur du boost de rendement d’un grade spécifique.
  */
+it('can get grade rendement boost', function () {
+    $grade0 = 0;
+    $response = $this->get('/api/rendement/grade/'.$grade0);
+    expect($response->status())->toBe(200);
+    $response->assertJsonPath('rendement', [
+        'start' => 1,
+        'smart' => 1.5,
+        'premium' => 2,
+    ]);
+});
+
+/**
+ * - Affichage de la valeur du boost de rendement d’un client spécifique.
+ */
+it('can get user rendement value', function () {
+    $this->seed(\Database\Seeders\PlanSeeder::class);
+    $user1 = \App\Models\User::factory()->create(['token_balance' => 10000, 'plan_id' => 3]);
+    $response = $this->get('/api/rendement/user/'.$user1->id);
+    expect($response->status())->toBe(200);
+    $response->assertJsonPath('rendement', 2.4);
+
+});

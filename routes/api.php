@@ -23,3 +23,6 @@ Route::get('/grade/{user}', [\App\Http\Controllers\GradeController::class, 'user
 Route::get('/cashback/grade/{grade}', [\App\Http\Controllers\GradeController::class, 'gradeCashback']);
 Route::get('/cashback/user/{user}', [\App\Http\Controllers\GradeController::class, 'userCashback']);
 Route::get('/cashback/user/{user}/amount/{amount}', [\App\Http\Controllers\GradeController::class, 'userAmountCashback']);
+Route::get('/rendement/grade/{grade}', [\App\Http\Controllers\GradeController::class, 'gradeRendement']);
+Route::get('/rendement/user/{user}', [\App\Http\Controllers\GradeController::class, 'userRendement']);
+Route::get('/user/{user}', [\App\Http\Controllers\UserController::class, 'show']);
