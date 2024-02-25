@@ -25,4 +25,23 @@ return [
             'premium' => 7,
         ],
     ],
+    'rendement' => [
+        'grade_0' => [
+            'start' => 1,
+            'smart' => 1.5,
+            'premium' => 2,
+        ],
+        'grade_1' => [
+            'start' => 1.1,
+            'smart' => 1.65,
+            'premium' => 2.2,
+        ],
+        'grade_2' => [
+            'smart' => 1.8,
+            'premium' => 2.4,
+        ],
+        'grade_3' => [
+            'premium' => 2.8,
+        ],
+    ],
 ];

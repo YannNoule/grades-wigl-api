@@ -15,10 +15,10 @@ class GradeController extends Controller
         $gradesWithAdvantages = [];
         foreach ($grades as $key => $grade) {
             foreach ($advantages as $name => $advantageData) {
-                $data = [];
                 $data[$name] = $advantageData['grade_'.$key];
                 $gradesWithAdvantages['grade_'.$key] = $data;
             }
+            $data = [];
         }
 
         return response()->json($gradesWithAdvantages);
@@ -53,6 +53,22 @@ class GradeController extends Controller
     {
         return response()->json([
             'cashback' => Utils::getUserAmountCashback($user, $amount),
+        ]);
+    }
+
+    public function gradeRendement(Request $request, $grade)
+    {
+        return response()->json([
+            'rendement' => config('advantages.rendement.'.'grade_'.$grade),
+        ]);
+    }
+
+    public function userRendement(Request $request, User $user)
+    {
+        $userRendement = Utils::getUserRendement($user);
+
+        return response()->json([
+            'rendement' => $userRendement,
         ]);
     }
 }
